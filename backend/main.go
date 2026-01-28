@@ -3,7 +3,9 @@ package main
 import (
 	"log"
 
+	"github.com/gin-gonic/gin"
 	"github.com/jeypc/go-crud/config"
+	"github.com/jeypc/go-crud/controllers"
 	"github.com/jeypc/go-crud/models"
 
 	"github.com/joho/godotenv"
@@ -18,7 +20,13 @@ func main() {
 
 	config.DB.AutoMigrate(&models.Item{})
 
-	log.Println("Database Migration Berhasil!")
+	r := gin.Default()
 
-	log.Println("Aplikasi berjalan di port 8080")
+	r.POST("/items", controllers.CreateItem)
+	r.GET("/items", controllers.GetItems)
+	r.GET("/items/:id", controllers.GetItemByID)
+	r.PUT("/items/:id", controllers.UpdateItem)
+	r.DELETE("/items/:id", controllers.DeleteItem)
+
+	r.Run()
 }
