@@ -18,7 +18,7 @@ func main() {
 	}
 	config.ConnectDatabase()
 
-	config.DB.AutoMigrate(&models.Item{})
+	config.DB.AutoMigrate(&models.Item{}, &models.User{})
 
 	r := gin.Default()
 
