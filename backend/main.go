@@ -28,5 +28,7 @@ func main() {
 	r.PUT("/items/:id", controllers.UpdateItem)
 	r.DELETE("/items/:id", controllers.DeleteItem)
 
+	r.POST("/register", controllers.Register)
+
 	r.Run()
 }
