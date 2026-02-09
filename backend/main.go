@@ -29,6 +29,7 @@ func main() {
 	r.DELETE("/items/:id", controllers.DeleteItem)
 
 	r.POST("/register", controllers.Register)
+	r.POST("/login", controllers.Login)
 
 	r.Run()
 }
